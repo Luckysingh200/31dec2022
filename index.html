@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Js Traversing</title>
+        <style>
+            #Grandfather{
+                border: 5px solid red;
+            }
+            #Father{
+                border: 5px solid blue;
+            }
+            .child1{
+                border: 5px solid green;
+            }
+            .child2{
+                border: 5px solid orange;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="Grandfather">
+            Grandfather
+            <div id="Father">
+                Father
+                <div class="child1">
+                    child1
+                </div>
+                <div class="child2">
+                    child2
+                </div>
+            </div>
+        </div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <td> 
+                        <button>Action</button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lucky</td>
+                    <td>singh</td>
+                    <td>
+                        <button data-id="d1" onclick="Deletetd(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Harish</td>
+                    <td>Goud</td>
+                    <td> 
+                        <button data-id="d2" onclick="Deletetd(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tarun</td>
+                    <td>Parmer</td>
+                    <td>
+                        <button data-id="d3" onclick="Deletetd(this)">Delete</button>
+                    </td>
+                    
+                    
+                </tr>
+
+            </tbody>
+        </table>
+        <script>
+            // i can write the js code before the closing body tag 
+            let c1 = document.querySelector('.child1');
+            c1.innerHTML = 'children1';
+            c1.style.border = '5px solid purple';
+            let gf = document.querySelector('.child2').closest('Grandfather')
+            console.log(gf);
+
+
+           let ltd = document.querySelector('table tbody tr td:last-child');
+           ltd.style.color = 'red';
+           console.log(ltd);
+
+
+           let ltdf = document.querySelector('table tbody tr td:first-child');
+           ltdf.style.color = 'blue';
+           console.log(ltdf);
+
+
+           let tbody = ltd.closest('tbody');
+           let harshtd = tbody.querySelector('tr:nth-child(2) td:first-child');
+           console.log(tbody);
+           harshtd.style.color = 'green';
+
+           
+        </script>
+        <script>
+            function Deletetd(elem){
+                console.log(elem);
+                let tr = elem.closest('tr');
+                tr.remove();
+                console.log(tr);
+
+            }
+        </script>
+        
+    </body>
+</html>
